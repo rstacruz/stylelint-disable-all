@@ -8,5 +8,20 @@
     "get-stdin": "5.0.1",
     "meow": "3.7.0",
     "uniq": "1.0.1"
-  }
+  },
+  "description": "Adds exceptions to all existing Stylelint violations",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rstacruz/stylelint-disable-all.git"
+  },
+  "keywords": [],
+  "author": "Rico Sta. Cruz <rico@ricostacruz.com> (http://ricostacruz.com)",
+  "bugs": {
+    "url": "https://github.com/rstacruz/stylelint-disable-all/issues"
+  },
+  "homepage": "https://github.com/rstacruz/stylelint-disable-all#readme"
 }

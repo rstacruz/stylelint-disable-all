@@ -4,31 +4,45 @@ const uniq = require('uniq')
 const relative = require('path').relative
 const chalk = require('chalk')
 
-const cli = require('meow')(`
-  Usage:
-    $ stylelint -f json | stylelint-disable-all
-
-  Options:
-    -h, --help       show usage information
-    -v, --version    print version info and exit
-`, {
-  boolean: ['help', 'version'],
-  alias: {
-    h: 'help', v: 'version'
-  }
-})
-
 const FORMAT = {
   file: chalk.underline,
   rule: chalk.blue
+}
+
+function run () {
+  const cli = require('meow')(`
+    Usage:
+      $ stylelint -f json | stylelint-disable-all
+
+    Options:
+      -h, --help       show usage information
+      -v, --version    print version info and exit
+  `, {
+    boolean: ['help', 'version'],
+    alias: {
+      h: 'help', v: 'version'
+    }
+  })
+
+  getStdin()
+    .then(json => {
+      return JSON.parse(json) || []
+    })
+    .then(files => {
+      process(files)
+    })
+    .catch(err => {
+      console.error('')
+      console.error(chalk.red(`  ERROR: ${err.message}`))
+      cli.showHelp(2)
+    })
 }
 
 /**
  * Run
  */
 
-getStdin().then(json => {
-  const files = JSON.parse(json) || []
+function process (files) {
   const pwd = process.cwd()
 
   files.forEach(f => {
@@ -42,7 +56,7 @@ getStdin().then(json => {
     print(relative(pwd, source), rules)
     prefix(source, prelude)
   })
-})
+}
 
 /**
  * Prints
@@ -63,4 +77,14 @@ function print (file, rules) {
 function prefix (file, prelude) {
   const data = prelude + require('fs').readFileSync(file, 'utf-8')
   require('fs').writeFileSync(file, data)
+}
+
+/**
+ * Export or run
+ */
+
+if (!module.parent) {
+  run()
+} else {
+  module.exports = { process, run }
 }
