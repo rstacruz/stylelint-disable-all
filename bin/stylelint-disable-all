@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+const getStdin = require('get-stdin')
+const uniq = require('uniq')
+const relative = require('path').relative
+const chalk = require('chalk')
+
+const cli = require('meow')(`
+  Usage:
+    $ stylelint -f json | stylelint-disable-all
+
+  Options:
+    -h, --help       show usage information
+    -v, --version    print version info and exit
+`, {
+  boolean: ['help', 'version'],
+  alias: {
+    h: 'help', v: 'version'
+  }
+})
+
+const FORMAT = {
+  file: chalk.underline,
+  rule: chalk.blue
+}
+
+/**
+ * Run
+ */
+
+getStdin().then(json => {
+  const files = JSON.parse(json) || []
+  const pwd = process.cwd()
+
+  files.forEach(f => {
+    const source = f.source
+    if (!f.warnings.length) return
+
+    const rules = uniq(f.warnings.map(r => r.rule).sort())
+
+    const prelude = `/* stylelint-disable ${rules.join(', ')} */\n\n`
+
+    print(relative(pwd, source), rules)
+    prefix(source, prelude)
+  })
+})
+
+/**
+ * Prints
+ */
+
+function print (file, rules) {
+  console.log(FORMAT.file(file))
+  rules.forEach(rule => {
+    console.log('  ' + FORMAT.rule(rule))
+  })
+}
+
+/**
+ * Updates a file
+ */
+
+function prefix (file, prelude) {
+  const data = prelude + require('fs').readFileSync(file, 'utf-8')
+  require('fs').writeFileSync(file, data)
+}
