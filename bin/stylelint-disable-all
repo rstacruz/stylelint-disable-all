@@ -49,6 +49,7 @@ getStdin().then(json => {
  */
 
 function print (file, rules) {
+  console.log('')
   console.log(FORMAT.file(file))
   rules.forEach(rule => {
     console.log('  ' + FORMAT.rule(rule))
