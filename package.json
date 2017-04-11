@@ -1,30 +1,36 @@
 {
   "name": "stylelint-disable-all",
+  "description": "Adds exceptions to all existing Stylelint violations",
   "version": "1.1.0",
-  "main": "index.js",
-  "license": "MIT",
+  "author": "Rico Sta. Cruz <rico@ricostacruz.com> (http://ricostacruz.com)",
+  "bugs": {
+    "url": "https://github.com/rstacruz/stylelint-disable-all/issues"
+  },
   "dependencies": {
     "chalk": "1.1.3",
     "get-stdin": "5.0.1",
     "meow": "3.7.0",
     "uniq": "1.0.1"
   },
-  "description": "Adds exceptions to all existing Stylelint violations",
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "files": [
+    "bin"
+  ],
+  "homepage": "https://github.com/rstacruz/stylelint-disable-all#readme",
+  "keywords": [
+    "disable",
+    "eslint",
+    "eslint-disable",
+    "stylelint",
+    "stylelint-disable"
+  ],
+  "license": "MIT",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rstacruz/stylelint-disable-all.git"
   },
-  "keywords": [],
-  "author": "Rico Sta. Cruz <rico@ricostacruz.com> (http://ricostacruz.com)",
-  "bugs": {
-    "url": "https://github.com/rstacruz/stylelint-disable-all/issues"
-  },
-  "homepage": "https://github.com/rstacruz/stylelint-disable-all#readme",
-  "files": [
-    "bin"
-  ]
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
