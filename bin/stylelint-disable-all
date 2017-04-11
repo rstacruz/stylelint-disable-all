@@ -29,7 +29,9 @@ function run () {
       return JSON.parse(json) || []
     })
     .then(files => {
-      processFiles(files)
+      processFiles(files, {
+        mode: cli.flags.mode
+      })
     })
     .catch(err => {
       console.error('')
@@ -42,16 +44,40 @@ function run () {
  * Run
  */
 
-function processFiles (files) {
+function inferFormat (files) {
+  if (files[0] && files[0].filePath) {
+    return {
+      format: 'eslint',
+      pragma: 'eslint-disable',
+      filepath: f => f.filePath,
+      messages: f => f.messages,
+      rule: f => f.ruleId
+    }
+  } else if (files[0] && files[0].filePath) {
+    return {
+      format: 'stylelint',
+      pragma: 'stylelint-disable',
+      filepath: f => f.source,
+      messages: f => f.warnings,
+      rule: f => f.rule
+    }
+  } else {
+    throw new Error('Unknown JSON format')
+  }
+}
+
+function processFiles (files, options = {}) {
+  const mode = inferFormat(files)
   const pwd = process.cwd()
 
   files.forEach(f => {
-    const source = f.source
-    if (!f.warnings.length) return
+    const source = mode.filepath(f)
+    const msgs = mode.messages(f)
+    if (!msgs.length) return
 
-    const rules = uniq(f.warnings.map(r => r.rule).sort())
+    const rules = uniq(msgs.map(mode.rule).sort())
 
-    const prelude = `/* stylelint-disable ${rules.join(', ')} */\n\n`
+    const prelude = `/* ${mode.pragma} ${rules.join(', ')} */\n\n`
 
     print(relative(pwd, source), rules)
     prefix(source, prelude)

@@ -1,8 +1,8 @@
 # stylelint-disable-all
 
-> Adds exceptions to all existing Stylelint violations
+> Adds exceptions to all existing Stylelint or Eslint violations
 
-This utility adds `/* stylelint-ignore */` to all files that are currently violating the stylelint rules. As a result, [Stylelint] will only take effect for new styles, leaving old styles un-linted.
+This utility adds `/* stylelint-ignore */` to all files that are currently violating the stylelint rules. As a result, [Stylelint] will only take effect for new styles, leaving old styles un-linted. Also works for [Eslint].
 
 ## Installation
 
@@ -14,10 +14,14 @@ npm install -g stylelint-disable-all
 
 ## Usage
 
-First, make sure you're on a **clean Git commit.** Then run [Stylelint] with the `-f json` flag (JSON formatter), and pipe it to stylelint-disable-all. **This will modify files right away.**
+Run [Stylelint] or [Eslint] with the `-f json` flag (JSON formatter), and pipe it to stylelint-disable-all. **This will modify files right away,** so first make sure you're on a clean Git commit.
 
 ```sh
-yarn run stylelint path/to/css/**/*.css -f json | stylelint-disable-all
+# CSS
+./node_modules/.bin/stylelint path/to/css/**/*.css -f json | stylelint-disable-all
+
+# or JavaScript
+./node_modules/.bin/eslint path/to/js/**/*.js -f json | stylelint-disable-all
 ```
 
 When this is done, inspect the mess that it creates.
@@ -27,6 +31,7 @@ git status
 ```
 
 [Stylelint]: http://stylelint.io/
+[Eslint]: http://eslint.org/
 
 ## Thanks
 
