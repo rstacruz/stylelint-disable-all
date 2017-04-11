@@ -29,7 +29,7 @@ function run () {
       return JSON.parse(json) || []
     })
     .then(files => {
-      process(files)
+      processFiles(files)
     })
     .catch(err => {
       console.error('')
@@ -42,7 +42,7 @@ function run () {
  * Run
  */
 
-function process (files) {
+function processFiles (files) {
   const pwd = process.cwd()
 
   files.forEach(f => {
