@@ -1,3 +1,10 @@
+## [v1.1.1]
+> Apr 11, 2017
+
+- Fix executables not being installed properly.
+
+[v1.1.1]: https://github.com/rstacruz/stylelint-disable-all/compare/v1.1.0...v1.1.1
+
 ## [v1.1.0]
 > Apr 11, 2017
 
