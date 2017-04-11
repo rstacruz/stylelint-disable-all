@@ -8,9 +8,17 @@ Compatible with [Stylelint] for CSS linting, and [Eslint] for JavaScript linting
 
 ## How it works
 
-This utility adds `/* stylelint-disable */` pragma to all files that are currently violating the Stylelint rules. As a result, Stylelint will only take effect for new styles, leaving old styles un-linted.
+This utility adds `/* stylelint-disable */` pragma to all files that are currently violating the Stylelint rules. As a result, Stylelint will only take effect for new code, leaving old code un-linted.
 
 Also works for Eslint for JavaScript linting.
+
+```diff
++/* stylelint-disable shorthand-property-no-redundant-values */
+
+ div {
+   padding: 8px 8px;
+ }
+```
 
 ## Installation
 
