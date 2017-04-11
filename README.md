@@ -1,8 +1,14 @@
 # stylelint-disable-all
 
-> Adds exceptions to all existing [Stylelint] or [Eslint] violations
+> Adds exceptions to all existing Stylelint or Eslint violations
 
-This utility adds `/* stylelint-ignore */` pragma to all files that are currently violating the Stylelint rules. As a result, Stylelint will only take effect for new styles, leaving old styles un-linted.
+Use this to introduce CSS and JavaScript linting to legacy projects that have a lot of existing code that'd be too much effort to fix all at once.
+
+Compatible with [Stylelint] for CSS linting, and [Eslint] for JavaScript linting.
+
+## How it works
+
+This utility adds `/* stylelint-disable */` pragma to all files that are currently violating the Stylelint rules. As a result, Stylelint will only take effect for new styles, leaving old styles un-linted.
 
 Also works for Eslint for JavaScript linting.
 
