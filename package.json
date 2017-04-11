@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/rstacruz/stylelint-disable-all/issues"
   },
-  "homepage": "https://github.com/rstacruz/stylelint-disable-all#readme"
+  "homepage": "https://github.com/rstacruz/stylelint-disable-all#readme",
+  "files": [
+    "bin"
+  ]
 }
