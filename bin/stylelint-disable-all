@@ -53,7 +53,7 @@ function inferFormat (files) {
       messages: f => f.messages,
       rule: f => f.ruleId
     }
-  } else if (files[0] && files[0].filePath) {
+  } else if (files[0] && files[0].source) {
     return {
       format: 'stylelint',
       pragma: 'stylelint-disable',
