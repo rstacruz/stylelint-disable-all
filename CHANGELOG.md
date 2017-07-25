@@ -1,3 +1,10 @@
+## [v1.2.0]
+> Jul 25, 2017
+
+- Hopefully fixes Stylelint compatibility.
+
+[v1.2.0]: https://github.com/rstacruz/stylelint-disable-all/compare/v1.1.1...v1.2.0
+
 ## [v1.1.1]
 > Apr 11, 2017
 

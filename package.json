@@ -1,7 +1,7 @@
 {
   "name": "stylelint-disable-all",
   "description": "Adds exceptions to all existing Stylelint violations",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com> (http://ricostacruz.com)",
   "bugs": {
     "url": "https://github.com/rstacruz/stylelint-disable-all/issues"
