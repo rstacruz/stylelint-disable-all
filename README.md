@@ -4,7 +4,7 @@
 
 Use this to introduce CSS and JavaScript linting to legacy projects that have a lot of existing code that'd be too much effort to fix all at once.
 
-Compatible with [Stylelint] for CSS linting, and [Eslint] for JavaScript linting.
+Compatible with [Stylelint] for CSS linting, and [Eslint] for JavaScript linting. For CSS, it supports `.css`, `.scss`, and `.less` files.
 
 ## How it works
 
