@@ -34,12 +34,12 @@ Run [Stylelint] or [Eslint] with the `-f json` flag (JSON formatter), and pipe i
 
 ```sh
 # CSS
-./node_modules/.bin/stylelint path/to/css/**/*.css -f json | stylelint-disable-all
+./node_modules/.bin/stylelint "path/to/css/**/*.css" -f json | stylelint-disable-all
 ```
 
 ```sh
 # or JavaScript
-./node_modules/.bin/eslint path/to/js/**/*.js -f json | stylelint-disable-all
+./node_modules/.bin/eslint "path/to/js/**/*.js" -f json | stylelint-disable-all
 ```
 
 When this is done, inspect the mess that it creates.
